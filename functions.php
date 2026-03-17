@@ -188,21 +188,6 @@ function djs_enqueue_assets() {
 }
 add_action( 'wp_enqueue_scripts', 'djs_enqueue_assets' );
 
-/**
- * Display a simple dashboard notice for theme admins.
- */
-function djs_dashboard_demo_notice() {
-	if ( ! current_user_can( 'manage_options' ) ) {
-		return;
-	}
-	?>
-	<div class="notice notice-success is-dismissible">
-		<p><?php esc_html_e( 'Welcome to DJS theme. Your dashboard demo message is now active.', 'djs' ); ?></p>
-	</div>
-	<?php
-}
-add_action( 'admin_notices', 'djs_dashboard_demo_notice' );
-
 
 require_once get_template_directory() . '/inc/woocommerce.php';
 require_once get_template_directory() . '/inc/product-filter.php';
