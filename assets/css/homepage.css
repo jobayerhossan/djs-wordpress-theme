@@ -1,0 +1,773 @@
+.home-hero {
+  position: relative;
+  height: 647px;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.home-hero-bg,
+.home-hero-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.home-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.home-hero-overlay {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.28) 0%, rgba(0, 0, 0, 0) 60%);
+  z-index: 1;
+}
+
+.home-hero .djs-container {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+}
+
+.home-hero-content {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.home-hero-inner {
+  max-width: 540px;
+  padding-top: 42px;
+}
+
+.home-hero-subtitle {
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: "Jost", sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  line-height: 15px;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+}
+
+.home-hero-title {
+  margin: 0 0 34px;
+  color: #ffffff;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 90px;
+  font-weight: 300;
+  line-height: 94.5px;
+  letter-spacing: 0;
+}
+
+.home-hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.home-hero-btn span {
+  color: #ffffff;
+  font-family: "Jost", sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  line-height: 16.5px;
+  letter-spacing: 3.3px;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.home-hero-btn span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.45);
+}
+
+.home-hero-btn img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  display: block;
+  filter: brightness(0) invert(1);
+}
+
+@media only screen and (max-width: 1199px) {
+  .home-hero {
+    height: 580px;
+  }
+
+  .home-hero-title {
+    font-size: 72px;
+    line-height: 1.04;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .home-hero {
+    height: 520px;
+  }
+
+  .home-hero-content {
+    align-items: flex-end;
+    padding-bottom: 48px;
+  }
+
+  .home-hero-inner {
+    max-width: 100%;
+    padding-top: 0;
+  }
+
+  .home-hero-subtitle {
+    margin-bottom: 14px;
+    font-size: 9px;
+    line-height: 14px;
+    letter-spacing: 2.8px;
+  }
+
+  .home-hero-title {
+    margin-bottom: 24px;
+    font-size: 52px;
+    line-height: 0.98;
+  }
+
+  .home-hero-btn span {
+    font-size: 10px;
+    line-height: 15px;
+    letter-spacing: 3px;
+  }
+}
+
+
+
+.home-announcement-bar {
+  position: relative;
+  overflow: hidden;
+  background: var(--djs-primary);
+  padding: 13px 0;
+}
+
+.home-announcement-slider {
+  width: 100%;
+  pointer-events: none;
+}
+
+.home-announcement-slider .swiper-wrapper {
+  transition-timing-function: linear !important;
+  align-items: center;
+}
+
+.home-announcement-slider .swiper-slide {
+  width: auto !important;
+  flex-shrink: 0;
+  color: #ffffff;
+  font-family: "Jost", sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  line-height: 15px;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding-right: 62px;
+}
+
+@media only screen and (max-width: 767px) {
+  .home-announcement-bar {
+    padding: 11px 0;
+  }
+
+  .home-announcement-slider .swiper-slide {
+    font-size: 9px;
+    line-height: 14px;
+    letter-spacing: 2.8px;
+    padding-right: 40px;
+  }
+}
+
+
+
+
+/* =========================
+   HOME FEATURED PRODUCTS
+========================= */
+.home-featured-products {
+  padding: 90px 0 90px;
+  background: #fff;
+}
+
+.home-featured-products__head {
+  margin-bottom: 42px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.home-featured-products__eyebrow {
+  margin-bottom: 14px;
+  color: var(--djs-primary);
+  font-family: "Jost", sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  line-height: 16px;
+  letter-spacing: 3.3px;
+  text-transform: uppercase;
+}
+
+.home-featured-products__title {
+  margin: 0;
+  color: #1a1a1a;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 64px;
+  font-weight: 300;
+  line-height: 0.98;
+  letter-spacing: 0;
+}
+
+.home-featured-products__all {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.home-featured-products__all span {
+  position: relative;
+  color: #6d6861;
+  font-family: "Jost", sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  line-height: 16px;
+  letter-spacing: 3.3px;
+  text-transform: uppercase;
+}
+
+.home-featured-products__all span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: calc(100% + 27px);
+  height: 1px;
+  background: #6d6861;
+}
+
+.home-featured-products__all img {
+  width: 15px;
+  height: 15px;
+  object-fit: contain;
+}
+
+.home-featured-products__grid ul.products {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.home-featured-products__grid ul.products li.product {
+  width: 100%;
+  margin: 0;
+}
+
+/* optional border between cards like design */
+.home-featured-products__grid .djs-product-card__content {
+  border-top: 1px solid #ece8e1;
+  border-left: 1px solid #ece8e1;
+}
+
+.home-featured-products__grid ul.products li.product:last-child .djs-product-card__content {
+  border-right: 1px solid #ece8e1;
+}
+
+.home-featured-products__grid .djs-product-card__image-wrap {
+  background: #efefef;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media only screen and (max-width: 1199px) {
+  .home-featured-products {
+    padding: 90px 0 100px;
+  }
+
+  .home-featured-products__title {
+    font-size: 54px;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .home-featured-products__head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .home-featured-products__grid ul.products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .home-featured-products__grid ul.products li.product:last-child .djs-product-card__content {
+    border-right: 0;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .home-featured-products {
+    padding: 70px 0 80px;
+  }
+
+  .home-featured-products__head {
+    margin-bottom: 28px;
+    gap: 16px;
+  }
+
+  .home-featured-products__eyebrow {
+    margin-bottom: 10px;
+    font-size: 10px;
+    line-height: 15px;
+    letter-spacing: 3px;
+  }
+
+  .home-featured-products__title {
+    font-size: 42px;
+  }
+
+  .home-featured-products__grid ul.products {
+    grid-template-columns: 1fr;
+  }
+
+  .home-featured-products__all span {
+    font-size: 10px;
+    letter-spacing: 3px;
+  }
+}
+
+
+
+
+/* =========================
+   HOME EDITORIAL GRID
+========================= */
+.home-editorial-grid {
+  padding: 0px;
+  background: #fff;
+}
+
+.home-editorial-grid__wrap {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+}
+
+.home-editorial-card {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  overflow: hidden;
+  background: #e9e9e9;
+}
+
+.home-editorial-card__image {
+  position: relative;
+  aspect-ratio: 734 / 1101;
+  overflow: hidden;
+}
+
+.home-editorial-card__image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 58%, rgba(0, 0, 0, 0.28) 100%);
+  z-index: 1;
+}
+
+.home-editorial-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s ease;
+}
+
+.home-editorial-card:hover .home-editorial-card__image img {
+  transform: scale(1.04);
+}
+
+.home-editorial-card__content {
+  position: absolute;
+  left: 36px;
+  right: 36px;
+  bottom: 34px;
+  z-index: 2;
+}
+
+.home-editorial-card__eyebrow {
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.78);
+  font-family: "Jost", sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  line-height: 15px;
+  letter-spacing: 3.3px;
+  text-transform: uppercase;
+}
+
+.home-editorial-card__title {
+  margin: 0 0 18px;
+  color: #ffffff;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 54px;
+  font-weight: 300;
+  line-height: 0.96;
+}
+
+.home-editorial-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.home-editorial-card__link span {
+  position: relative;
+  color: #ffffff;
+  font-family: "Jost", sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  line-height: 16px;
+  letter-spacing: 3.3px;
+  text-transform: uppercase;
+}
+
+.home-editorial-card__link span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.home-editorial-card__link img {
+  width: 15px;
+  height: 15px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+@media only screen and (max-width: 1199px) {
+  .home-editorial-card__title {
+    font-size: 44px;
+  }
+
+  .home-editorial-card__content {
+    left: 26px;
+    right: 26px;
+    bottom: 26px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .home-editorial-grid {
+    padding: 0 0 80px;
+  }
+
+  .home-editorial-grid__wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .home-editorial-card__content {
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+  }
+
+  .home-editorial-card__eyebrow {
+    font-size: 9px;
+    line-height: 14px;
+    letter-spacing: 2.8px;
+  }
+
+  .home-editorial-card__title {
+    margin-bottom: 14px;
+    font-size: 36px;
+  }
+
+  .home-editorial-card__link span {
+    font-size: 10px;
+    line-height: 15px;
+    letter-spacing: 3px;
+  }
+}
+
+
+
+/* =========================
+   HOME VISION
+========================= */
+.home-vision {
+  padding: 95px 0 95px;
+  background: #fff;
+  text-align: center;
+}
+
+.home-vision__inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.home-vision__eyebrow {
+  margin-bottom: 22px;
+  color: var(--djs-primary);
+  font-family: "Jost", sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  line-height: 15px;
+  letter-spacing: 3.3px;
+  text-transform: uppercase;
+}
+
+.home-vision__quote {
+  margin: 0;
+  color: #1a1a1a;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 29px;
+  font-weight: 300;
+  line-height: 1.9;
+  font-style: italic;
+}
+
+.home-vision__meta {
+  margin-top: 26px;
+  color: #b1aaa1;
+  font-family: "Jost", sans-serif;
+  font-size: 9px;
+  font-weight: 300;
+  line-height: 14px;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+}
+
+/* =========================
+   HOME CAMPAIGN BANNER
+========================= */
+.home-campaign-banner {
+  position: relative;
+  overflow: hidden;
+  background: #ddd;
+}
+
+.home-campaign-banner__image {
+  position: relative;
+  aspect-ratio: 1468 / 903;
+}
+
+.home-campaign-banner__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.home-campaign-banner__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.06) 18%, rgba(0,0,0,0.22) 100%);
+  z-index: 1;
+}
+
+.home-campaign-banner__content {
+  position: absolute;
+  left: 50%;
+  top: 51%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 100%;
+  max-width: 760px;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.home-campaign-banner__eyebrow {
+  margin-bottom: 12px;
+  color: rgba(255,255,255,0.78);
+  font-family: "Jost", sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  line-height: 15px;
+  letter-spacing: 3.3px;
+  text-transform: uppercase;
+}
+
+.home-campaign-banner__title {
+  margin: 0 0 24px;
+  color: #ffffff;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 72px;
+  font-weight: 300;
+  line-height: 0.98;
+}
+
+.home-campaign-banner__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 192px;
+  min-height: 42px;
+  padding: 10px 22px;
+  border: 1px solid rgba(255,255,255,0.45);
+  color: #ffffff;
+  text-decoration: none;
+  font-family: "Jost", sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  line-height: 15px;
+  letter-spacing: 2.6px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.home-campaign-banner__btn:hover {
+  background: #ffffff;
+  color: #1a1a1a;
+}
+
+/* =========================
+   HOME VALUES
+========================= */
+.home-values {
+  padding: 52px 0 58px;
+  background: rgb(247, 245, 242);
+}
+
+.home-values__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.home-values__item {
+  text-align: center;
+}
+
+.home-values__icon {
+  margin-bottom: 14px;
+  color: var(--djs-primary);
+  font-size: 16px;
+  line-height: 1;
+}
+
+.home-values__title {
+  margin: 0 0 10px;
+  color: #1a1a1a;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.home-values__text {
+  max-width: 250px;
+  margin: 0 auto;
+  color: #9e978d;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media only screen and (max-width: 1199px) {
+  .home-vision {
+    padding: 90px 0 80px;
+  }
+
+  .home-vision__quote {
+    font-size: 25px;
+  }
+
+  .home-campaign-banner__title {
+    font-size: 60px;
+  }
+
+  .home-values__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 34px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .home-vision {
+    padding: 70px 0 60px;
+  }
+
+  .home-vision__eyebrow {
+    margin-bottom: 16px;
+    font-size: 9px;
+    line-height: 14px;
+    letter-spacing: 2.8px;
+  }
+
+  .home-vision__quote {
+    font-size: 18px;
+    line-height: 1.8;
+  }
+
+  .home-vision__meta {
+    margin-top: 18px;
+    font-size: 8px;
+    line-height: 13px;
+    letter-spacing: 2.2px;
+  }
+
+  .home-campaign-banner__content {
+    top: 50%;
+    padding: 0 18px;
+  }
+
+  .home-campaign-banner__eyebrow {
+    margin-bottom: 10px;
+    font-size: 9px;
+    line-height: 14px;
+    letter-spacing: 2.8px;
+  }
+
+  .home-campaign-banner__title {
+    margin-bottom: 18px;
+    font-size: 42px;
+  }
+
+  .home-campaign-banner__btn {
+    min-width: 170px;
+    min-height: 40px;
+    font-size: 9px;
+    line-height: 14px;
+    letter-spacing: 2.4px;
+  }
+
+  .home-values {
+    padding: 42px 0 50px;
+  }
+
+  .home-values__grid {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .home-values__title {
+    font-size: 17px;
+  }
+
+  .home-values__text {
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,904 @@
+/* =========================
+   PRODUCT CARD BASE
+========================= */
+.djs-product-card {
+  list-style: none;
+  position: relative;
+}
+
+.djs-product-card__inner {
+  position: relative;
+}
+
+.djs-product-card__image-link {
+  display: block;
+  text-decoration: none;
+}
+
+/* =========================
+   IMAGE WRAP
+========================= */
+.djs-product-card__image-wrap {
+  position: relative;
+  overflow: hidden;
+  background: #f5f5f5;
+  aspect-ratio: 476 / 662;
+}
+
+/* IMAGE CONTAINER */
+.djs-product-card__image {
+  position: absolute;
+  inset: 0;
+}
+
+/* IMAGE */
+.djs-product-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  will-change: transform, opacity;
+}
+
+/* =========================
+   DEFAULT IMAGE
+========================= */
+.djs-product-card__image--default {
+  z-index: 1;
+}
+
+.djs-product-card__image--default .djs-product-card__img {
+  transition: transform 0.9s ease;
+  transform: scale(1);
+}
+
+/* =========================
+   HOVER IMAGE
+========================= */
+.djs-product-card__image--hover {
+  z-index: 2;
+}
+
+.djs-product-card__image--hover .djs-product-card__img {
+  transition: opacity 0.7s ease, transform 0.9s ease;
+  opacity: 0;
+  transform: scale(1.05);
+}
+
+/* =========================
+   HOVER EFFECT
+========================= */
+.djs-product-card:hover .djs-product-card__image--hover .djs-product-card__img {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* subtle zoom on base image */
+.djs-product-card:hover .djs-product-card__image--default .djs-product-card__img {
+  transform: scale(1.02);
+}
+
+/* =========================
+   WISHLIST ICON
+========================= */
+.djs-product-card__wishlist {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 3;
+}
+
+.djs-product-card__wishlist a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.djs-product-card__wishlist img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+/* =========================
+   ADD TO CART OVERLAY
+========================= */
+.djs-product-card__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: rgba(26, 26, 26, 0.75);
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  z-index: 3;
+}
+
+/* ON HOVER */
+.djs-product-card:hover .djs-product-card__overlay {
+  transform: translateY(0%);
+  opacity: 1;
+}
+
+/* =========================
+   ADD TO CART BUTTON
+========================= */
+.djs-product-card__cart-btn {
+  width: 100%;
+  min-height: 40px;
+  border: 1px solid rgba(255,255,255,0.6);
+  background: transparent;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  border-radius: 0px;
+}
+
+.djs-product-card__cart-btn:hover {
+  background: var(--djs-primary);
+  color: #fff;
+  border-color: var(--djs-primary);
+}
+
+/* =========================
+   CONTENT (TITLE + PRICE)
+========================= */
+.djs-product-card__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 8px 12px;
+  background: #fff;
+}
+
+.djs-product-card__title {
+  margin: 0;
+  flex: 1;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.djs-product-card__title a {
+  color: #1a1a1a;
+  text-decoration: none;
+}
+
+.djs-product-card__price {
+  font-family: "Jost", sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  white-space: nowrap;
+}
+
+.djs-product-card__price .amount {
+  color: inherit;
+}
+
+.products {
+  display: grid;
+  
+}
+.products.columns-1{
+	grid-template-columns: repeat(1, 1fr);
+}
+.products.columns-2{
+	grid-template-columns: repeat(2, 1fr);
+}
+.products.columns-3{
+	grid-template-columns: repeat(3, 1fr);
+}
+.products.columns-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+.products.columns-5 {
+  grid-template-columns: repeat(5, 1fr);
+}
+.added_to_cart.wc-forward {
+  display: none;
+}
+.djs-product-card__cart-btn {
+  position: relative;
+  overflow: hidden;
+}
+.djs-product-card__cart-btn.loading {
+  color: transparent;
+}
+.djs-product-card__cart-btn.loading::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: djs-spin 0.7s linear infinite;
+}
+
+@keyframes djs-spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+.djs-product-card__cart-btn.loading {
+  pointer-events: none;
+}
+.djs-product-card__cart-btn.added {
+  color: #fff;
+}
+
+.djs-product-card__cart-btn.added::after {
+  content: "✓";
+  font-size: 16px;
+  margin-left: 5px;
+}
+
+.djs-product-card {
+  border-right: 1px solid #F0F0F0;
+  border-bottom: 1px solid #F0F0F0;
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media only screen and (max-width: 767px) {
+
+  .djs-product-card__wishlist {
+    top: 14px;
+    right: 14px;
+  }
+
+  /* Always visible on mobile */
+  .djs-product-card__overlay {
+    transform: translateY(0%);
+    opacity: 1;
+    padding: 16px;
+  }
+
+  /* Always show hover image */
+  .djs-product-card__image--hover .djs-product-card__img {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .djs-product-card__cart-btn {
+    min-height: 40px;
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+
+  .djs-product-card__content {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+
+  .djs-product-card__title,
+  .djs-product-card__price {
+    font-size: 10px;
+    letter-spacing: 1.8px;
+  }
+}
+
+
+
+
+.djs-shop-toolbar {
+  border-top: 1px solid #E5E5E5;
+  border-bottom: 1px solid #E5E5E5;
+  background: #fff;
+}
+
+.djs-shop-toolbar__inner {
+  min-height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.djs-shop-toolbar__left {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.djs-shop-toolbar__right {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  margin-left: auto;
+}
+
+.djs-filter-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  font-family: "Jost", sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #1a1a1a;
+}
+
+.djs-filter-toggle img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.djs-shop-tabs {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.djs-shop-tab {
+  position: relative;
+  text-decoration: none;
+  color: #999;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.djs-shop-tab.active,
+.djs-shop-tab:hover {
+  color: #1A1A1A;
+}
+.djs-shop-tab.active{
+	font-weight: 500;
+}
+
+.djs-shop-tab.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -25px;
+  width: 100%;
+  height: 2px;
+  background: #1a1a1a;
+}
+
+.djs-active-filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.djs-filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 34px;
+  padding: 6px 12px;
+  border: 1px solid rgb(26, 26, 26);
+  background: transparent;
+  cursor: pointer;
+  color: rgb(26, 26, 26);
+  font-family: "Jost", sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.djs-filter-pill span {
+  font-size: 13px;
+  line-height: 1;
+}
+
+.djs-shop-count {
+  color: #9d9890;
+  font-family: "Jost", sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: 2px;
+}
+
+.djs-sort-wrap {
+  position: relative;
+}
+
+.djs-sort-select {
+  min-width: 172px;
+  height: 38px;
+  padding: 0 42px 0 16px;
+  border: 1px solid rgb(229, 229, 229);
+  background: transparent;
+  color: rgb(85, 85, 85);
+  font-family: "Jost", sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.djs-sort-wrap::after {
+  content: "⌄";
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  transform: translateY(-58%);
+  color: #6f6962;
+  font-size: 14px;
+  pointer-events: none;
+}
+
+.djs-filter-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 4000;
+  pointer-events: none;
+}
+
+.djs-filter-drawer.active {
+  pointer-events: auto;
+}
+
+.djs-filter-drawer__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.djs-filter-drawer.active .djs-filter-drawer__overlay {
+  opacity: 1;
+}
+
+.djs-filter-drawer__panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 360px;
+  max-width: 95%;
+  height: 100%;
+  background: #fff;
+  transform: translateX(-100%);
+  transition: transform 0.35s ease;
+  overflow-y: auto;
+  padding: 0 0 20px;
+}
+
+.djs-filter-drawer.active .djs-filter-drawer__panel {
+  transform: translateX(0);
+}
+
+.djs-filter-drawer__header {
+  min-height: 54px;
+  padding: 0 16px;
+  border-bottom: 1px solid #e8e2d8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.djs-filter-drawer__header h3 {
+  margin: 0;
+  color: #1a1a1a;
+  font-family: "Jost", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.djs-filter-close {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  color: #8d8881;
+  font-family: "Jost", sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.djs-filter-close span {
+  font-size: 14px;
+}
+
+.djs-filter-group {
+  padding: 20px 14px;
+  border-bottom: 1px solid #e8e2d8;
+}
+
+.djs-filter-group__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.djs-filter-group__title {
+  color: #1a1a1a;
+  font-family: "Jost", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.djs-filter-collapse {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: #8d8881;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.djs-filter-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.djs-filter-options--boxed {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.djs-chip-label {
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.djs-chip-label input {
+  display: none;
+}
+
+.djs-chip-label span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  padding: 6px 16px;
+    border: 1px solid #E0E0E0;
+  background: transparent;
+  color: #555;
+  font-family: "Jost", sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+}
+
+.djs-chip-label input:checked + span {
+  background: #151515;
+  border-color: #151515;
+  color: #ffffff;
+}
+
+.djs-filter-options--genre {
+  gap: 16px;
+}
+
+.djs-check-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.djs-check-label input {
+  display: none;
+}
+
+.djs-check-ui {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #1a1a1a;
+  background: transparent;
+  position: relative;
+  flex: 0 0 18px;
+}
+
+.djs-check-label input:checked + .djs-check-ui::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  background: #1a1a1a;
+}
+
+.djs-check-text {
+  color: #4a4540;
+  font-family: "Jost", sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.djs-filter-actions {
+  position: sticky;
+  bottom: 0;
+  padding: 16px 14px;
+  display: flex;
+  gap: 10px;
+  border-top: 1px solid #e8e2d8;
+}
+
+.djs-filter-apply,
+.djs-filter-reset {
+  flex: 1;
+  min-height: 48px;
+  cursor: pointer;
+  font-family: "Jost", sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.djs-filter-apply {
+  border: 1px solid #111;
+  background: #111;
+  color: #fff;
+}
+
+.djs-filter-reset {
+  border: 1px solid #ddd6ca;
+  background: transparent;
+  color: #777;
+}
+
+.djs-products-grid-wrap.loading,
+.djs-pagination-wrap.loading {
+  opacity: 0.5;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.djs-shop-content ul.products {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.djs-shop-content ul.products li.product {
+  width: 100%;
+  margin: 0;
+}
+
+.djs-pagination-wrap {
+  padding: 30px 20px 40px;
+  text-align: center;
+}
+
+.djs-pagination-wrap ul.page-numbers {
+  display: inline-flex;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.djs-pagination-wrap .page-numbers a,
+.djs-pagination-wrap .page-numbers span {
+  min-width: 38px;
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: 1px solid #ddd;
+  color: #1a1a1a;
+}
+
+.djs-no-products {
+    padding: 60px 20px;
+  text-align: center;
+  color: #666;
+  font-family: "Jost", sans-serif;
+  letter-spacing: 1px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+.djs-filter-group.is-collapsed .djs-filter-options {
+  display: none;
+}
+.djs-no-products h2 {
+  font-weight: 300;
+}
+
+.djs-no-products h2 {
+  font-weight: 300;
+}
+.djs-no-products .djs-filter-reset {
+  border: 1px solid #1a1a1a;
+  border-radius: 0px;
+  display: flex !important;
+}
+
+@media (max-width: 1199px) {
+  .djs-shop-toolbar__inner {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 14px 0;
+  }
+
+  .djs-shop-toolbar__right {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 991px) {
+  .djs-shop-content ul.products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .djs-shop-tabs {
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .djs-active-filters {
+    width: 100%;
+  }
+
+  .djs-shop-toolbar__right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .djs-shop-content ul.products {
+    grid-template-columns: 1fr;
+  }
+
+  .djs-filter-drawer__panel {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+
+
+.djs-category-hero {
+  position: relative;
+  height: 460px;
+  overflow: hidden;
+  background: #eee;
+}
+
+.djs-category-hero__bg,
+.djs-category-hero__overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.djs-category-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.djs-category-hero__overlay {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.04) 42%, rgba(0, 0, 0, 0) 72%);
+  z-index: 1;
+}
+
+.djs-category-hero .djs-container {
+  position: relative;
+  height: 100%;
+  z-index: 2;
+}
+
+.djs-category-hero__content {
+  position: absolute;
+  left: 24px;
+  bottom: 56px;
+  max-width: 520px;
+}
+
+.djs-category-hero__eyebrow {
+  margin-bottom: 12px;
+  color: rgba(255, 255, 255, 0.72);
+  font-family: "Jost", sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  line-height: 15px;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+}
+
+.djs-category-hero__title {
+  margin: 0;
+  color: #ffffff;
+  font-family: "Jost", sans-serif;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.djs-category-hero.no_cat_image {
+  height: 200px;
+}
+
+@media (max-width: 1199px) {
+  .djs-category-hero {
+    height: 420px;
+  }
+}
+
+@media (max-width: 767px) {
+  .djs-category-hero {
+    height: 360px;
+  }
+
+  .djs-category-hero__content {
+    left: 20px;
+    right: 0;
+    bottom: 28px;
+    max-width: 100%;
+  }
+
+  .djs-category-hero__eyebrow {
+    margin-bottom: 10px;
+    font-size: 9px;
+    line-height: 14px;
+    letter-spacing: 2.8px;
+  }
+
+  .djs-category-hero__title {
+    font-size: 20px;
+    letter-spacing: 2.4px;
+  }
+}
