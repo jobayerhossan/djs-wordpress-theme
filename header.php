@@ -11,6 +11,8 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
+<?php $djs_account_url = get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ); ?>
+
 <header class="site-header">
 	<div class="header-topbar desktop-topbar">
 		<div class="djs-container">
@@ -61,8 +63,8 @@
 							<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/Search.svg' ); ?>" alt="<?php esc_attr_e( 'Search', 'djs' ); ?>">
 						</button>
 
-						<a href="#" class="header-icon header-account" aria-label="<?php esc_attr_e( 'Account', 'djs' ); ?>">
-							<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/User.svg' ); ?>" alt="<?php esc_attr_e( 'Wishlist', 'djs' ); ?>">
+						<a href="<?php echo esc_url( $djs_account_url ); ?>" class="header-icon header-account" aria-label="<?php esc_attr_e( 'Account', 'djs' ); ?>">
+							<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/User.svg' ); ?>" alt="<?php esc_attr_e( 'Account', 'djs' ); ?>">
 						</a>
 
 						<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="header-icon header-cart" aria-label="<?php esc_attr_e( 'Cart', 'djs' ); ?>">
@@ -102,8 +104,8 @@
 						<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/Search.svg' ); ?>" alt="">
 					</a>
 
-					<a href="#" class="header-icon" aria-label="<?php esc_attr_e( 'Wishlist', 'djs' ); ?>">
-						<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/heart.svg' ); ?>" alt="">
+					<a href="<?php echo esc_url( $djs_account_url ); ?>" class="header-icon" aria-label="<?php esc_attr_e( 'Account', 'djs' ); ?>">
+						<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/User.svg' ); ?>" alt="<?php esc_attr_e( 'Account', 'djs' ); ?>">
 					</a>
 
 					<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="header-icon header-cart" aria-label="<?php esc_attr_e( 'Cart', 'djs' ); ?>">
@@ -121,9 +123,11 @@
 
 			<div class="mobile-nav-menu-wrap">
 				<?php
+				$mobile_menu_location = has_nav_menu( 'mobile_menu' ) ? 'mobile_menu' : 'header_left_menu';
+
 				wp_nav_menu(
 					array(
-						'theme_location' => 'header_left_menu',
+						'theme_location' => $mobile_menu_location,
 						'container'      => false,
 						'menu_class'     => 'mobile-nav-menu',
 						'fallback_cb'    => false,

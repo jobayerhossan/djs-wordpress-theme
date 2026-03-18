@@ -62,11 +62,12 @@ h6 {
   margin:0;
   color:var(--djs-text);
   font-weight:700;
-  line-height:1.2
+  line-height:1.2;
   font-family: "Cormorant Garamond", serif;
 }
 h1 {
-  font-size:70px
+  font-size:50px;
+  font-weight: 300;
 }
 h2 {
   font-size:40px
@@ -208,4 +209,10 @@ input[type=submit]:hover,
   background-color:var(--djs-primary);
   border:1px solid var(--djs-primary);
   color:#fff
+}
+.djs-page-content{
+  padding: 40px 0px;;
+}
+.djs-page-header{
+  padding-bottom: 10px;
 }

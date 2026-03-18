@@ -2,6 +2,11 @@
 add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 
 /**
+ * Allow archive-enabled product attributes to appear in Appearance > Menus.
+ */
+add_filter( 'woocommerce_attribute_show_in_nav_menus', '__return_true', 10, 2 );
+
+/**
  * Refresh header cart count after AJAX add to cart
  */
 function djs_header_cart_count_fragment( $fragments ) {

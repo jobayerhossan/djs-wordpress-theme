@@ -45,7 +45,7 @@
 
 				<!-- Navigation -->
 				<div class="footer-col">
-					<h4 class="footer-title">Navigation</h4>
+					<h4 class="footer-title">Boutique</h4>
 					<?php
 					wp_nav_menu(array(
 						'theme_location' => 'footer_menu',

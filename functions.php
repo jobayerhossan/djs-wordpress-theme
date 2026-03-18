@@ -56,6 +56,7 @@ function djs_theme_setup() {
 		array(
 			'header_left_menu'   => __( 'Header Left Menu', 'djs' ),
 			'header_right_menu'  => __( 'Header Right Menu', 'djs' ),
+			'mobile_menu'        => __( 'Mobile Menu', 'djs' ),
 			'footer_menu'        => __( 'Footer Navigation Menu', 'djs' ),
 			'footer_service'     => __( 'Footer Service Client Menu', 'djs' ),
 			'footer_legal'       => __( 'Footer Legal Pages Menu', 'djs' ),
@@ -237,6 +238,9 @@ add_action( 'wp_enqueue_scripts', 'djs_enqueue_assets' );
 require_once get_template_directory() . '/inc/woocommerce.php';
 require_once get_template_directory() . '/inc/product-filter.php';
 require_once get_template_directory() . '/inc/single-product-acf.php';
+require_once get_template_directory() . '/inc/homepage-acf.php';
+require_once get_template_directory() . '/inc/about-page-acf.php';
+require_once get_template_directory() . '/inc/contact-page-acf.php';
 require_once get_template_directory() . '/inc/contact-page.php';
 require_once get_template_directory() . '/inc/account.php';
 require_once get_template_directory() . '/inc/mega-menu.php';
