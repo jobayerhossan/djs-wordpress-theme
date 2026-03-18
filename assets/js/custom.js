@@ -414,3 +414,71 @@ jQuery(document).ready(function ($) {
   });
 
 });
+
+jQuery(document).ready(function ($) {
+  const $variationForms = $('.single-product .variations_form');
+
+  if (!$variationForms.length) {
+    return;
+  }
+
+  $variationForms.each(function () {
+    const $form = $(this);
+
+    $form.find('table.variations select').each(function () {
+      const $select = $(this);
+      const $valueCell = $select.closest('td.value');
+
+      if ($valueCell.find('.djs-variation-chips').length) {
+        return;
+      }
+
+      const options = $select.find('option').filter(function () {
+        return $(this).val() !== '';
+      });
+
+      if (!options.length) {
+        return;
+      }
+
+      $valueCell.addClass('has-djs-chips');
+
+      const $chipWrap = $('<div class="djs-variation-chips" />');
+
+      options.each(function () {
+        const $option = $(this);
+        const value = $option.val();
+        const label = $option.text();
+        const $chip = $(
+          `<button type="button" class="djs-variation-chip" data-value="${value}">${label}</button>`
+        );
+
+        if ($select.val() === value) {
+          $chip.addClass('is-active');
+        }
+
+        $chip.on('click', function () {
+          $select.val(value).trigger('change');
+        });
+
+        $chipWrap.append($chip);
+      });
+
+      $valueCell.append($chipWrap);
+
+      $select.on('change', function () {
+        const currentValue = $select.val();
+        $chipWrap.find('.djs-variation-chip').removeClass('is-active');
+        $chipWrap
+          .find(`.djs-variation-chip[data-value="${currentValue}"]`)
+          .addClass('is-active');
+      });
+    });
+
+    $form.on('click', '.reset_variations', function () {
+      window.setTimeout(function () {
+        $form.find('.djs-variation-chip').removeClass('is-active');
+      }, 0);
+    });
+  });
+});

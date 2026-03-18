@@ -153,6 +153,15 @@ function djs_enqueue_assets() {
 		$theme_version
 	);
 
+	if ( is_product() ) {
+		wp_enqueue_style(
+			'djs-single-product-style',
+			get_template_directory_uri() . '/assets/css/single-product.css',
+			array( 'djs-main-style', 'djs-products' ),
+			$theme_version
+		);
+	}
+
 	/*
 	|--------------------------------------------------------------------------
 	| Scripts
@@ -191,3 +200,4 @@ add_action( 'wp_enqueue_scripts', 'djs_enqueue_assets' );
 
 require_once get_template_directory() . '/inc/woocommerce.php';
 require_once get_template_directory() . '/inc/product-filter.php';
+require_once get_template_directory() . '/inc/single-product-acf.php';

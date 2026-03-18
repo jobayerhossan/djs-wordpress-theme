@@ -194,7 +194,9 @@
 
 .products {
   display: grid;
-  
+  margin:0px; 
+  padding:0px; 
+  list-style:none;
 }
 .products.columns-1{
 	grid-template-columns: repeat(1, 1fr);
