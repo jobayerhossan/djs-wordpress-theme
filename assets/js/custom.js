@@ -482,3 +482,136 @@ jQuery(document).ready(function ($) {
     });
   });
 });
+
+jQuery(document).ready(function ($) {
+  const $contactForm = $('#djs-contact-form');
+
+  if (!$contactForm.length) {
+    return;
+  }
+
+  const $submitButton = $contactForm.find('.djs-contact-form__submit');
+  const $status = $contactForm.find('.djs-contact-form__status');
+
+  $contactForm.on('submit', function (e) {
+    e.preventDefault();
+
+    const formData = {
+      action: 'djs_submit_contact_form',
+      nonce: djs_ajax_obj.nonce,
+      name: $.trim($('#djs-contact-name').val()),
+      email: $.trim($('#djs-contact-email').val()),
+      subject: $.trim($('#djs-contact-subject').val()),
+      message: $.trim($('#djs-contact-message').val()),
+    };
+
+    $status.removeClass('is-error is-success').text('');
+    $submitButton.addClass('is-loading').prop('disabled', true);
+
+    $.ajax({
+      url: djs_ajax_obj.ajax_url,
+      type: 'POST',
+      data: formData,
+      success: function (response) {
+        if (response.success) {
+          $status.addClass('is-success').text(response.data.message);
+          $contactForm[0].reset();
+        } else if (response.data && response.data.message) {
+          $status.addClass('is-error').text(response.data.message);
+        } else {
+          $status.addClass('is-error').text('Une erreur est survenue.');
+        }
+      },
+      error: function (xhr) {
+        const message =
+          xhr.responseJSON && xhr.responseJSON.data && xhr.responseJSON.data.message
+            ? xhr.responseJSON.data.message
+            : 'Une erreur est survenue.';
+
+        $status.addClass('is-error').text(message);
+      },
+      complete: function () {
+        $submitButton.removeClass('is-loading').prop('disabled', false);
+      }
+    });
+  });
+});
+
+jQuery(document).ready(function ($) {
+  const $cartForm = $('.woocommerce-cart-form');
+
+  if (!$cartForm.length) {
+    return;
+  }
+
+  let updateTimer = null;
+
+  function queueCartUpdate() {
+    window.clearTimeout(updateTimer);
+    updateTimer = window.setTimeout(function () {
+      $cartForm.trigger('submit');
+    }, 250);
+  }
+
+  $cartForm.on('click', '.djs-cart-qty-btn', function () {
+    const $button = $(this);
+    const $input = $button
+      .closest('.djs-cart-item__quantity-controls')
+      .find('input.qty');
+
+    if (!$input.length) {
+      return;
+    }
+
+    const currentValue = parseInt($input.val(), 10) || 0;
+    const min = parseInt($input.attr('min'), 10) || 0;
+    const max = parseInt($input.attr('max'), 10) || 9999;
+    let nextValue = currentValue;
+
+    if ($button.hasClass('djs-cart-qty-btn--plus')) {
+      nextValue = Math.min(currentValue + 1, max);
+    } else {
+      nextValue = Math.max(currentValue - 1, min);
+    }
+
+    $input.val(nextValue).trigger('change');
+    queueCartUpdate();
+  });
+
+  $cartForm.on('change', 'input.qty', function () {
+    queueCartUpdate();
+  });
+});
+
+jQuery(document).ready(function ($) {
+  const $accountAuth = $('.djs-account-auth__inner');
+
+  if (!$accountAuth.length) {
+    return;
+  }
+
+  function activateTab(tabName) {
+    $accountAuth.find('.djs-account-auth__tab').removeClass('is-active');
+    $accountAuth
+      .find(`.djs-account-auth__tab[data-target="${tabName}"]`)
+      .addClass('is-active');
+
+    $accountAuth.find('.djs-account-panel').removeClass('is-active');
+    $accountAuth
+      .find(`.djs-account-panel[data-panel="${tabName}"]`)
+      .addClass('is-active');
+  }
+
+  $accountAuth.on('click', '.djs-account-auth__tab', function () {
+    activateTab($(this).data('target'));
+  });
+
+  $accountAuth.on('click', '.djs-account-password-toggle', function () {
+    const $button = $(this);
+    const $field = $button.siblings('input');
+    const nextType = $field.attr('type') === 'password' ? 'text' : 'password';
+
+    $field.attr('type', nextType);
+    $button.toggleClass('is-visible', nextType === 'text');
+  });
+});

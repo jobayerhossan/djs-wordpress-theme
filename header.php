@@ -23,16 +23,7 @@
 			<div class="header-main-wrap">
 
 				<div class="header-left desktop-only">
-					<?php
-					wp_nav_menu(
-						array(
-							'theme_location' => 'header_left_menu',
-							'container'      => false,
-							'menu_class'     => 'header-menu header-menu-left',
-							'fallback_cb'    => false,
-						)
-					);
-					?>
+					<?php djs_render_header_mega_menu(); ?>
 				</div>
 
 				<div class="mobile-menu-toggle mobile-only">

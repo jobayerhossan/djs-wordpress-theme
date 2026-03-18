@@ -146,6 +146,24 @@ function djs_enqueue_assets() {
 		);
 	}
 
+	if ( is_page_template( 'templates/about-page.php' ) ) {
+		wp_enqueue_style(
+			'djs-about-page-style',
+			get_template_directory_uri() . '/assets/css/about-page.css',
+			array( 'djs-main-style' ),
+			$theme_version
+		);
+	}
+
+	if ( is_page_template( 'templates/contact-page.php' ) ) {
+		wp_enqueue_style(
+			'djs-contact-page-style',
+			get_template_directory_uri() . '/assets/css/contact-page.css',
+			array( 'djs-main-style' ),
+			$theme_version
+		);
+	}
+
 	wp_enqueue_style(
 		'djs-products',
 		get_template_directory_uri() . '/assets/css/products.css',
@@ -158,6 +176,24 @@ function djs_enqueue_assets() {
 			'djs-single-product-style',
 			get_template_directory_uri() . '/assets/css/single-product.css',
 			array( 'djs-main-style', 'djs-products' ),
+			$theme_version
+		);
+	}
+
+	if ( is_cart() ) {
+		wp_enqueue_style(
+			'djs-cart-page-style',
+			get_template_directory_uri() . '/assets/css/cart-page.css',
+			array( 'djs-main-style', 'djs-products' ),
+			$theme_version
+		);
+	}
+
+	if ( is_account_page() ) {
+		wp_enqueue_style(
+			'djs-account-page-style',
+			get_template_directory_uri() . '/assets/css/account-page.css',
+			array( 'djs-main-style' ),
 			$theme_version
 		);
 	}
@@ -201,3 +237,6 @@ add_action( 'wp_enqueue_scripts', 'djs_enqueue_assets' );
 require_once get_template_directory() . '/inc/woocommerce.php';
 require_once get_template_directory() . '/inc/product-filter.php';
 require_once get_template_directory() . '/inc/single-product-acf.php';
+require_once get_template_directory() . '/inc/contact-page.php';
+require_once get_template_directory() . '/inc/account.php';
+require_once get_template_directory() . '/inc/mega-menu.php';

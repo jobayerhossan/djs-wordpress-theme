@@ -1,0 +1,373 @@
+.djs-about-page {
+  background: #fff;
+  color: var(--djs-secondary);
+}
+
+.djs-about-hero {
+  position: relative;
+  min-height: 640px;
+  overflow: hidden;
+}
+
+.djs-about-hero__bg,
+.djs-about-hero__bg img,
+.djs-about-hero__overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.djs-about-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.djs-about-hero__overlay {
+  background:
+    linear-gradient(180deg, rgba(15, 15, 15, 0.18) 0%, rgba(15, 15, 15, 0.32) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.12) 0%, rgba(0, 0, 0, 0.04) 100%);
+}
+
+.djs-about-hero__content {
+  position: relative;
+  z-index: 1;
+  min-height: 640px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 24px;
+}
+
+.djs-about-hero__eyebrow,
+.djs-about-intro__eyebrow,
+.djs-about-story__eyebrow,
+.djs-about-values__eyebrow,
+.djs-about-quote__meta {
+  font-family: "Jost", sans-serif;
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.djs-about-hero__eyebrow,
+.djs-about-intro__eyebrow,
+.djs-about-story__eyebrow,
+.djs-about-values__eyebrow {
+  color: var(--djs-primary);
+}
+
+.djs-about-hero__eyebrow {
+  margin-bottom: 14px;
+}
+
+.djs-about-hero__title {
+  color: #fff;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 96px;
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+
+.djs-about-hero__signature {
+  margin-top: 12px;
+  color: rgba(255, 255, 255, 0.86);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 24px;
+  font-style: italic;
+  line-height: 1;
+}
+
+.djs-about-intro {
+  padding: 88px 0 36px;
+}
+
+.djs-about-intro__inner {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.djs-about-intro__eyebrow {
+  margin-bottom: 22px;
+}
+
+.djs-about-intro__quote {
+  color: var(--djs-secondary);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 42px;
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: -0.02em;
+}
+
+.djs-about-story {
+  padding: 72px 0;
+}
+
+.djs-about-story__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 72px;
+}
+
+.djs-about-story--reverse .djs-about-story__grid {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+}
+
+.djs-about-story__content {
+  max-width: 480px;
+}
+
+.djs-about-story__eyebrow {
+  margin-bottom: 18px;
+}
+
+.djs-about-story__title {
+  color: var(--djs-secondary);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 58px;
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin-bottom: 26px;
+}
+
+.djs-about-story__content p {
+  color: #6c655e;
+  font-size: 15px;
+  line-height: 1.95;
+  margin-bottom: 18px;
+  max-width: 440px;
+}
+
+.djs-about-story__content p:last-child {
+  margin-bottom: 0;
+}
+
+.djs-about-story__media img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.djs-about-story--first .djs-about-story__media {
+  max-width: 620px;
+  justify-self: end;
+}
+
+.djs-about-story--reverse .djs-about-story__media {
+  max-width: 560px;
+}
+
+.djs-about-values {
+  margin-top: 44px;
+  background: var(--djs-secondary);
+  padding: 90px 0 86px;
+}
+
+.djs-about-values__inner {
+  color: #f7f5f2;
+}
+
+.djs-about-values__eyebrow {
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.djs-about-values__title {
+  color: #f7f5f2;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 54px;
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+  margin-bottom: 54px;
+}
+
+.djs-about-values__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 36px;
+}
+
+.djs-about-value__number {
+  color: var(--djs-primary);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 42px;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.djs-about-value__label {
+  color: #f7f5f2;
+  font-family: "Jost", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.djs-about-value p {
+  color: #938b83;
+  font-size: 14px;
+  line-height: 1.9;
+  max-width: 240px;
+}
+
+.djs-about-quote {
+  padding: 98px 0 104px;
+}
+
+.djs-about-quote__inner {
+  max-width: 920px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.djs-about-quote__text {
+  margin: 0;
+  color: var(--djs-secondary);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 50px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: -0.03em;
+}
+
+.djs-about-quote__meta {
+  margin-top: 22px;
+  color: #b0a79c;
+}
+
+@media only screen and (max-width: 1199px) {
+  .djs-about-hero,
+  .djs-about-hero__content {
+    min-height: 560px;
+  }
+
+  .djs-about-hero__title {
+    font-size: 80px;
+  }
+
+  .djs-about-intro__quote {
+    font-size: 36px;
+  }
+
+  .djs-about-story__grid,
+  .djs-about-story--reverse .djs-about-story__grid {
+    gap: 48px;
+  }
+
+  .djs-about-story__title {
+    font-size: 48px;
+  }
+
+  .djs-about-values__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px 42px;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .djs-about-intro {
+    padding-top: 72px;
+  }
+
+  .djs-about-story {
+    padding: 52px 0;
+  }
+
+  .djs-about-story__grid,
+  .djs-about-story--reverse .djs-about-story__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .djs-about-story__content,
+  .djs-about-story--first .djs-about-story__media,
+  .djs-about-story--reverse .djs-about-story__media {
+    max-width: none;
+    justify-self: stretch;
+  }
+
+  .djs-about-values {
+    padding: 72px 0;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .djs-about-hero,
+  .djs-about-hero__content {
+    min-height: 460px;
+  }
+
+  .djs-about-hero__content {
+    padding: 56px 18px;
+  }
+
+  .djs-about-hero__title {
+    font-size: 56px;
+  }
+
+  .djs-about-hero__signature {
+    font-size: 20px;
+  }
+
+  .djs-about-intro {
+    padding: 56px 0 18px;
+  }
+
+  .djs-about-intro__quote {
+    font-size: 29px;
+    line-height: 1.45;
+  }
+
+  .djs-about-story {
+    padding: 42px 0;
+  }
+
+  .djs-about-story__title {
+    font-size: 38px;
+    margin-bottom: 18px;
+  }
+
+  .djs-about-story__content p {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .djs-about-values {
+    margin-top: 20px;
+    padding: 56px 0;
+  }
+
+  .djs-about-values__title {
+    font-size: 38px;
+    margin-bottom: 36px;
+  }
+
+  .djs-about-values__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .djs-about-value p {
+    max-width: none;
+  }
+
+  .djs-about-quote {
+    padding: 66px 0 72px;
+  }
+
+  .djs-about-quote__text {
+    font-size: 34px;
+    line-height: 1.4;
+  }
+}
