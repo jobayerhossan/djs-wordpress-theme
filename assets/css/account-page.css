@@ -31,10 +31,12 @@
   align-items: flex-end;
   gap: 0;
   border-bottom: 1px solid #ece7df;
-  margin: 0 auto 58px;
+  margin: 0 auto 30px;
   max-width: 480px;
 }
-
+.djs-account-panel .woocommerce-privacy-policy-text {
+    display: none;
+}
 .djs-account-auth__tab {
   flex: 1;
   min-height: 48px;
@@ -58,7 +60,7 @@
 
 .djs-account-panel {
   display: none;
-  max-width: 560px;
+  max-width: 480px;
   margin: 0 auto;
 }
 
@@ -69,53 +71,83 @@
 .djs-account-panel__title {
   color: var(--djs-secondary);
   font-family: "Cormorant Garamond", serif;
-  font-size: 62px;
+  font-size: 36px;
   font-weight: 400;
   line-height: 1.02;
   letter-spacing: -0.04em;
-  margin-bottom: 34px;
+  margin-bottom: 30px;
 }
 
-.djs-account-page label,
+.djs-account-auth label,
 .djs-account-field__hint {
   font-family: "Jost", sans-serif;
   font-size: 11px;
   line-height: 1.5;
   letter-spacing: 0.24em;
   text-transform: uppercase;
+  padding:10px 0px
 }
 
-.djs-account-page label {
+.djs-account-auth label {
   color: #a89f93;
-  margin-bottom: 16px;
+  margin-bottom: 5px;
+  font-family: "Jost", sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 15px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.djs-account-auth label.djs-account-checkbox{
+  margin-bottom: 20px;
+}
+p.djs-account-generated-password-note {
+    display: none;
+}
+.djs-account-auth .woocommerce-form-row,
+.djs-account-auth .form-row {
+  margin: 0 0 24px;
 }
 
-.djs-account-page .woocommerce-form-row,
-.djs-account-page .form-row {
-  margin: 0 0 28px;
-}
-
-.djs-account-page input[type="text"],
-.djs-account-page input[type="email"],
-.djs-account-page input[type="password"] {
+.djs-account-auth input[type="text"],
+.djs-account-auth input[type="email"],
+.djs-account-auth input[type="password"] {
   width: 100%;
-  padding: 0 0 14px;
+  padding: 0 34px 16px 0;
   border: 0;
   border-bottom: 1px solid #ebe4da;
-  background: transparent;
+  background: transparent !important;
   color: var(--djs-secondary);
   font-family: "Jost", sans-serif;
   font-size: 15px;
-  line-height: 1.7;
-}
-
-.djs-account-page input::placeholder {
-  color: #c4bbaf;
-}
-
-.djs-account-page input:focus {
-  border-color: var(--djs-secondary);
+  font-weight: 300;
+  line-height: 1;
   box-shadow: none;
+  appearance: none;
+}
+
+.djs-account-auth input::placeholder {
+  color: #b8afa4;
+  opacity: 1;
+}
+
+.djs-account-auth input:focus {
+  border-color: var(--djs-secondary);
+  background: transparent !important;
+  box-shadow: none;
+  outline: 0;
+}
+
+.djs-account-auth input:-webkit-autofill,
+.djs-account-auth input:-webkit-autofill:hover,
+.djs-account-auth input:-webkit-autofill:focus,
+.djs-account-auth input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: var(--djs-secondary) !important;
+  background-color: transparent !important;
+  transition: background-color 9999s ease-out 0s;
 }
 
 .djs-account-field {
@@ -125,7 +157,7 @@
 .djs-account-password-toggle {
   position: absolute;
   right: 0;
-  bottom: 12px;
+  bottom: 14px;
   width: 24px;
   height: 24px;
   padding: 0;
@@ -147,34 +179,39 @@
   color: #c0b7ab;
 }
 
-.djs-account-page .lost_password {
-  margin: 4px 0 28px;
+.djs-account-auth .lost_password {
+  margin: 10px 0 44px;
   text-align: right;
 }
 
-.djs-account-page .lost_password a {
+.djs-account-auth .lost_password a {
   color: var(--djs-primary);
-  font-size: 13px;
-  line-height: 1.6;
+  font-family: "Jost", sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 2px;
+  text-transform: none;
 }
 
-.djs-account-page .woocommerce-form-login__submit,
-.djs-account-page .woocommerce-form-register__submit {
+.djs-account-auth .woocommerce-form-login__submit,
+.djs-account-auth .woocommerce-form-register__submit {
   width: 100%;
-  min-height: 62px;
+  min-height: 68px;
   border: 0;
   border-radius: 0;
-  background: var(--djs-secondary);
+  background: #1A1A1A;
   color: #fff;
   font-family: "Jost", sans-serif;
   font-size: 12px;
+  font-weight: 400;
   line-height: 1.4;
-  letter-spacing: 0.28em;
+  letter-spacing: 4px;
   text-transform: uppercase;
 }
 
-.djs-account-page .woocommerce-form-login__submit:hover,
-.djs-account-page .woocommerce-form-register__submit:hover {
+.djs-account-auth .woocommerce-form-login__submit:hover,
+.djs-account-auth .woocommerce-form-register__submit:hover {
   background: var(--djs-primary);
 }
 
@@ -182,6 +219,45 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 26px;
+}
+
+.djs-account-panel .woocommerce-form-login,
+.djs-account-panel .woocommerce-form-register {
+  max-width: 100%;
+}
+
+.djs-account-panel .form-row:last-child {
+  margin-bottom: 0;
+}
+
+.djs-account-auth .password-input {
+  display: block;
+  position: relative;
+}
+
+.djs-account-auth .password-input .input-text {
+  padding-right: 34px;
+}
+
+.djs-account-auth .password-input .show-password-input {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 24px;
+  height: 24px;
+  margin-top: -12px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #b7aea2;
+  cursor: pointer;
+  font-size: 0;
+  line-height: 1;
+}
+
+.djs-account-auth .password-input .show-password-input::after {
+  color: currentColor;
+  font-size: 18px;
 }
 
 .djs-account-checkbox {
@@ -213,8 +289,9 @@
 
 .djs-account-checkbox span {
   color: #b1a89c;
-  font-size: 14px;
-  line-height: 1.8;
+  font-size: 11px;
+  line-height: 1.2;
+  text-transform: initial;
 }
 
 .djs-account-legal-note,
@@ -278,6 +355,10 @@
   line-height: 1.9;
 }
 
+.djs-account-shell__content .woocommerce-MyAccount-content > p:first-child {
+  margin-top: 0;
+}
+
 .djs-account-shell__content h2,
 .djs-account-shell__content h3 {
   color: var(--djs-secondary);
@@ -287,19 +368,217 @@
   line-height: 1.1;
 }
 
+.djs-account-shell__content a {
+  color: var(--djs-primary);
+  text-decoration: none;
+}
+
+.djs-account-shell__content a:hover {
+  text-decoration: underline;
+}
+
+.djs-account-shell__content .woocommerce-Button,
+.djs-account-shell__content .button,
+.djs-account-shell__content button.button,
+.djs-account-shell__content input.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 14px 22px;
+  border: 0;
+  border-radius: 0;
+  background: var(--djs-secondary);
+  color: #fff;
+  font-family: "Jost", sans-serif;
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.djs-account-shell__content .woocommerce-Button:hover,
+.djs-account-shell__content .button:hover,
+.djs-account-shell__content button.button:hover,
+.djs-account-shell__content input.button:hover {
+  background: var(--djs-primary);
+  color: #fff;
+}
+
+.djs-account-shell__content .woocommerce-info,
+.djs-account-shell__content .woocommerce-message,
+.djs-account-shell__content .woocommerce-error {
+  margin-bottom: 26px;
+  padding: 18px 20px;
+  border: 1px solid #ece7df;
+  background: #faf8f5;
+}
+
+.djs-account-shell__content .woocommerce-orders-table,
+.djs-account-shell__content .shop_table_responsive,
+.djs-account-shell__content .woocommerce-Addresses {
+  margin-top: 22px;
+}
+
+.djs-account-shell__content table.shop_table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.djs-account-shell__content table.shop_table th,
+.djs-account-shell__content table.shop_table td {
+  padding: 16px 0;
+  border-bottom: 1px solid #ece7df;
+  text-align: left;
+  vertical-align: top;
+}
+
+.djs-account-shell__content table.shop_table th {
+  color: #8f867b;
+  font-family: "Jost", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.djs-account-shell__content .woocommerce-orders-table__cell-order-actions {
+  white-space: nowrap;
+}
+
+.djs-account-shell__content .woocommerce-orders-table__cell-order-actions .button {
+  min-height: 42px;
+  padding: 10px 14px;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+}
+
+.djs-account-shell__content .woocommerce-address-fields .form-row,
+.djs-account-shell__content .edit-account .form-row {
+  margin-bottom: 24px;
+}
+
+.djs-account-shell__content input[type="text"],
+.djs-account-shell__content input[type="email"],
+.djs-account-shell__content input[type="password"],
+.djs-account-shell__content input[type="tel"],
+.djs-account-shell__content textarea,
+.djs-account-shell__content select {
+  width: 100%;
+  padding: 0 0 14px;
+  border: 0;
+  border-bottom: 1px solid #ebe4da;
+  background: transparent;
+  color: var(--djs-secondary);
+  font-family: "Jost", sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.djs-account-shell__content textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.djs-account-shell__content .woocommerce-column--billing-address,
+.djs-account-shell__content .woocommerce-column--shipping-address,
+.djs-account-shell__content .woocommerce-Address {
+  padding: 24px;
+  border: 1px solid #ece7df;
+  background: #faf8f5;
+}
+
+.djs-account-shell__content .woocommerce-Addresses {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.djs-account-shell__content .woocommerce-column__title,
+.djs-account-shell__content .woocommerce-Address-title h3 {
+  margin: 0 0 16px;
+  font-size: 30px;
+}
+
+.djs-account-shell__content .woocommerce-Address address {
+  margin: 0;
+  font-style: normal;
+}
+
+.djs-account-shell__content .edit-account fieldset {
+  margin: 34px 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.djs-account-shell__content .edit-account legend {
+  width: 100%;
+  margin: 0 0 20px;
+  padding: 0 0 14px;
+  border-bottom: 1px solid #ece7df;
+  color: var(--djs-secondary);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.djs-account-shell__content .edit-account .password-input {
+  position: relative;
+  display: block;
+}
+
+.djs-account-shell__content .edit-account .password-input .input-text {
+  padding-right: 38px;
+}
+
+.djs-account-shell__content .edit-account .show-password-input {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 24px;
+  height: 24px;
+  margin-top: -12px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #b7aea2;
+  cursor: pointer;
+  font-size: 0;
+  line-height: 1;
+}
+
+.djs-account-shell__content .edit-account .show-password-input::after {
+  color: currentColor;
+  font-size: 18px;
+}
+
+.djs-account-shell__content .edit-account > p:last-of-type {
+  margin-top: 36px;
+}
+
 @media only screen and (max-width: 991px) {
   .djs-account-auth {
     padding: 58px 0 90px;
   }
 
   .djs-account-panel__title {
-    font-size: 50px;
+    font-size: 30px;
   }
 
   .djs-account-shell {
     grid-template-columns: 1fr;
     gap: 30px;
     padding: 48px 0 72px;
+  }
+
+  .djs-account-shell__content .woocommerce-Addresses {
+    grid-template-columns: 1fr;
+  }
+
+  .djs-account-shell__content .edit-account legend {
+    font-size: 30px;
   }
 }
 
@@ -313,7 +592,7 @@
   }
 
   .djs-account-auth__tabs {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
   }
 
   .djs-account-panel__title {
@@ -328,5 +607,27 @@
 
   .djs-account-page .lost_password {
     text-align: left;
+  }
+
+  .djs-account-shell__content table.shop_table thead {
+    display: none;
+  }
+
+  .djs-account-shell__content table.shop_table tr {
+    display: block;
+    padding: 14px 0;
+    border-bottom: 1px solid #ece7df;
+  }
+
+  .djs-account-shell__content table.shop_table td {
+    display: block;
+    padding: 8px 0;
+    border: 0;
+  }
+
+  .djs-account-shell__content .woocommerce-column--billing-address,
+  .djs-account-shell__content .woocommerce-column--shipping-address,
+  .djs-account-shell__content .woocommerce-Address {
+    padding: 18px;
   }
 }

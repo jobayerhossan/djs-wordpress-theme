@@ -92,11 +92,13 @@ $djs_contact_get_field = static function ( $name ) use ( $djs_contact_defaults )
 							<textarea id="djs-contact-message" name="message" placeholder="<?php echo esc_attr( $djs_contact_get_field( 'message_placeholder' ) ); ?>" required></textarea>
 						</div>
 
-						<div class="djs-contact-form__status" aria-live="polite"></div>
+						
 
 						<button type="submit" class="djs-contact-form__submit">
 							<?php echo esc_html( $djs_contact_get_field( 'submit_text' ) ); ?>
 						</button>
+
+						<div class="djs-contact-form__status" aria-live="polite"></div>
 					</form>
 				</div>
 

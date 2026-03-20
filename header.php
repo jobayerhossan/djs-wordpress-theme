@@ -12,11 +12,21 @@
 <?php wp_body_open(); ?>
 
 <?php $djs_account_url = get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ); ?>
+<?php
+$djs_header_topbar_text     = djs_get_theme_text( 'header_topbar_text', 'LIVRAISON OFFERTE DÈS 200€ — RETOURS GRATUITS 30 JOURS' );
+$djs_mobile_account_label   = djs_get_theme_text( 'mobile_account_label', 'COMPTE' );
+$djs_mobile_stores_label    = djs_get_theme_text( 'mobile_stores_label', 'BOUTIQUES' );
+$djs_mobile_help_label      = djs_get_theme_text( 'mobile_help_label', 'AIDE' );
+$djs_search_eyebrow         = djs_get_theme_text( 'search_overlay_eyebrow', 'Rechercher' );
+$djs_search_placeholder     = djs_get_theme_text( 'search_placeholder', 'Rechercher un produit, une catégorie...' );
+$djs_search_tags_raw        = djs_get_theme_text( 'search_tags', "Manteaux|manteaux\nRobes|robes\nPulls|pulls\nSneakers|sneakers\nSacs|sacs" );
+$djs_search_tags            = array_filter( array_map( 'trim', preg_split( '/\r\n|\r|\n/', $djs_search_tags_raw ) ) );
+?>
 
 <header class="site-header">
 	<div class="header-topbar desktop-topbar">
 		<div class="djs-container">
-			<p class="header-topbar-text">LIVRAISON OFFERTE DÈS 200€ — RETOURS GRATUITS 30 JOURS</p>
+			<p class="header-topbar-text"><?php echo esc_html( $djs_header_topbar_text ); ?></p>
 		</div>
 	</div>
 
@@ -84,7 +94,7 @@
 		<div class="mobile-nav-inner">
 
 			<div class="mobile-nav-topbar">
-				<p>LIVRAISON OFFERTE DÈS 200€ — RETOURS GRATUITS 30 JOURS</p>
+				<p><?php echo esc_html( $djs_header_topbar_text ); ?></p>
 				<button type="button" class="mobile-nav-close-top" aria-label="<?php esc_attr_e( 'Close menu', 'djs' ); ?>">×</button>
 			</div>
 
@@ -100,9 +110,9 @@
 				</div>
 
 				<div class="mobile-nav-header-right">
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="header-icon" aria-label="<?php esc_attr_e( 'Search', 'djs' ); ?>">
+					<button type="button" class="header-icon djs-search-toggle" aria-label="<?php esc_attr_e( 'Search', 'djs' ); ?>">
 						<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/Search.svg' ); ?>" alt="">
-					</a>
+					</button>
 
 					<a href="<?php echo esc_url( $djs_account_url ); ?>" class="header-icon" aria-label="<?php esc_attr_e( 'Account', 'djs' ); ?>">
 						<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/User.svg' ); ?>" alt="<?php esc_attr_e( 'Account', 'djs' ); ?>">
@@ -152,27 +162,22 @@
 					<li>
 						<a href="<?php echo esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ); ?>">
 							<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/User.svg' ); ?>" alt="">
-							<span>COMPTE</span>
+							<span><?php echo esc_html( $djs_mobile_account_label ); ?></span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="<?php echo esc_url( wc_get_cart_url() ); ?>">
 							<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/ShoppingBag.svg' ); ?>" alt="">
-							<span>BOUTIQUES</span>
+							<span><?php echo esc_html( $djs_mobile_stores_label ); ?></span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<button type="button" class="djs-search-toggle mobile-nav-link-button" aria-label="<?php esc_attr_e( 'Search', 'djs' ); ?>">
 							<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/Search.svg' ); ?>" alt="">
-							<span>AIDE</span>
-						</a>
+							<span><?php echo esc_html( $djs_mobile_help_label ); ?></span>
+						</button>
 					</li>
 				</ul>
-
-				<div class="mobile-nav-locale">
-					<span>FRANCE — FRANÇAIS (EUR — €)</span>
-					<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/ArrowRight.svg' ); ?>" alt="">
-				</div>
 			</div>
 
 		</div>
@@ -183,10 +188,15 @@
 
 <div class="djs-search-overlay">
 	<div class="djs-search-overlay__inner">
-		<button type="button" class="djs-search-overlay__close" aria-label="<?php esc_attr_e( 'Close search', 'djs' ); ?>">×</button>
+		<button type="button" class="djs-search-overlay__close" aria-label="<?php esc_attr_e( 'Close search', 'djs' ); ?>">
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+				<path d="M18 6L6 18" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+				<path d="M6 6L18 18" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+			</svg>
+		</button>
 
 		<div class="djs-search-overlay__content">
-			<div class="djs-search-overlay__eyebrow">Rechercher</div>
+			<div class="djs-search-overlay__eyebrow"><?php echo esc_html( $djs_search_eyebrow ); ?></div>
 
 			<form role="search" method="get" class="djs-search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 				<label class="screen-reader-text" for="djs-product-search">
@@ -197,7 +207,7 @@
 					type="search"
 					id="djs-product-search"
 					class="djs-search-form__input"
-					placeholder="Rechercher un produit, une catégorie..."
+					placeholder="<?php echo esc_attr( $djs_search_placeholder ); ?>"
 					value="<?php echo get_search_query(); ?>"
 					name="s"
 					autocomplete="off"
@@ -211,11 +221,16 @@
 			</form>
 
 			<div class="djs-search-overlay__tags">
-				<a href="<?php echo esc_url( add_query_arg( array( 's' => 'manteaux', 'post_type' => 'product' ), home_url( '/' ) ) ); ?>">Manteaux</a>
-				<a href="<?php echo esc_url( add_query_arg( array( 's' => 'robes', 'post_type' => 'product' ), home_url( '/' ) ) ); ?>">Robes</a>
-				<a href="<?php echo esc_url( add_query_arg( array( 's' => 'pulls', 'post_type' => 'product' ), home_url( '/' ) ) ); ?>">Pulls</a>
-				<a href="<?php echo esc_url( add_query_arg( array( 's' => 'sneakers', 'post_type' => 'product' ), home_url( '/' ) ) ); ?>">Sneakers</a>
-				<a href="<?php echo esc_url( add_query_arg( array( 's' => 'sacs', 'post_type' => 'product' ), home_url( '/' ) ) ); ?>">Sacs</a>
+				<?php foreach ( $djs_search_tags as $djs_search_tag_line ) : ?>
+					<?php
+					$djs_search_tag_parts = array_map( 'trim', explode( '|', $djs_search_tag_line, 2 ) );
+					$djs_search_tag_label = $djs_search_tag_parts[0] ?? '';
+					$djs_search_tag_query = $djs_search_tag_parts[1] ?? $djs_search_tag_label;
+					?>
+					<?php if ( $djs_search_tag_label && $djs_search_tag_query ) : ?>
+						<a href="<?php echo esc_url( add_query_arg( array( 's' => $djs_search_tag_query, 'post_type' => 'product' ), home_url( '/' ) ) ); ?>"><?php echo esc_html( $djs_search_tag_label ); ?></a>
+					<?php endif; ?>
+				<?php endforeach; ?>
 			</div>
 		</div>
 	</div>

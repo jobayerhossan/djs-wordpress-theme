@@ -1,39 +1,32 @@
 <?php
 /**
- * Blog index template.
+ * Search results template.
  *
  * @package DJS
  */
 
 get_header();
 
-$djs_blog_title       = djs_get_theme_text( 'blog_index_title', 'Journal' );
-$djs_blog_read_more   = djs_get_theme_text( 'blog_read_more', 'Lire la suite' );
-$djs_blog_empty       = djs_get_theme_text( 'blog_empty_text', 'Aucun article n’a été publié pour le moment.' );
-$djs_pagination_prev  = djs_get_theme_text( 'pagination_prev_text', 'Précédent' );
-$djs_pagination_next  = djs_get_theme_text( 'pagination_next_text', 'Suivant' );
+$djs_search_results_prefix = djs_get_theme_text( 'search_results_prefix', 'Résultats pour :' );
+$djs_search_empty_text     = djs_get_theme_text( 'search_empty_text', 'Aucun résultat ne correspond à votre recherche.' );
+$djs_pagination_prev       = djs_get_theme_text( 'pagination_prev_text', 'Précédent' );
+$djs_pagination_next       = djs_get_theme_text( 'pagination_next_text', 'Suivant' );
 ?>
 
-<main class="djs-page-content djs-blog-index">
+<main class="djs-page-content djs-search-page">
 	<div class="djs-container">
-		<header class="djs-page-header djs-blog-index__header">
+		<header class="djs-page-header djs-search-page__header">
 			<h1 class="djs-page-title">
-				<?php
-				if ( is_home() && ! is_front_page() ) {
-					single_post_title();
-				} else {
-					echo esc_html( $djs_blog_title );
-				}
-				?>
+				<?php echo esc_html( $djs_search_results_prefix . ' ' . get_search_query() ); ?>
 			</h1>
 		</header>
 
 		<?php if ( have_posts() ) : ?>
-			<div class="djs-blog-index__list">
+			<div class="djs-blog-index__list djs-search-page__results">
 				<?php while ( have_posts() ) : ?>
 					<?php the_post(); ?>
 
-					<article id="post-<?php the_ID(); ?>" <?php post_class( 'djs-blog-card' ); ?>>
+					<article id="post-<?php the_ID(); ?>" <?php post_class( 'djs-blog-card djs-search-card' ); ?>>
 						<?php if ( has_post_thumbnail() ) : ?>
 							<a class="djs-blog-card__thumb" href="<?php the_permalink(); ?>">
 								<?php the_post_thumbnail( 'large' ); ?>
@@ -42,6 +35,8 @@ $djs_pagination_next  = djs_get_theme_text( 'pagination_next_text', 'Suivant' );
 
 						<div class="djs-blog-card__content">
 							<div class="djs-blog-card__meta">
+								<span><?php echo esc_html( get_post_type_object( get_post_type() )->labels->singular_name ?? get_post_type() ); ?></span>
+								<span>·</span>
 								<time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
 									<?php echo esc_html( get_the_date() ); ?>
 								</time>
@@ -54,10 +49,6 @@ $djs_pagination_next  = djs_get_theme_text( 'pagination_next_text', 'Suivant' );
 							<div class="djs-blog-card__excerpt">
 								<?php the_excerpt(); ?>
 							</div>
-
-							<a class="djs-blog-card__link" href="<?php the_permalink(); ?>">
-								<?php echo esc_html( $djs_blog_read_more ); ?>
-							</a>
 						</div>
 					</article>
 				<?php endwhile; ?>
@@ -75,8 +66,8 @@ $djs_pagination_next  = djs_get_theme_text( 'pagination_next_text', 'Suivant' );
 				?>
 			</div>
 		<?php else : ?>
-			<div class="djs-blog-empty">
-				<p><?php echo esc_html( $djs_blog_empty ); ?></p>
+			<div class="djs-blog-empty djs-search-page__empty">
+				<p><?php echo esc_html( $djs_search_empty_text ); ?></p>
 			</div>
 		<?php endif; ?>
 	</div>

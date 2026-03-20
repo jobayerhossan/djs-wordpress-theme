@@ -23,9 +23,7 @@
 }
 
 .djs-about-hero__overlay {
-  background:
-    linear-gradient(180deg, rgba(15, 15, 15, 0.18) 0%, rgba(15, 15, 15, 0.32) 100%),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.12) 0%, rgba(0, 0, 0, 0.04) 100%);
+    background: rgba(0,0,0,.5);
 }
 
 .djs-about-hero__content {
@@ -48,7 +46,7 @@
   font-family: "Jost", sans-serif;
   font-size: 11px;
   line-height: 1.5;
-  letter-spacing: 0.28em;
+  letter-spacing: 4px;
   text-transform: uppercase;
 }
 
@@ -61,6 +59,7 @@
 
 .djs-about-hero__eyebrow {
   margin-bottom: 14px;
+  color:rgba(255,255,255,.7); 
 }
 
 .djs-about-hero__title {
@@ -74,7 +73,7 @@
 
 .djs-about-hero__signature {
   margin-top: 12px;
-  color: rgba(255, 255, 255, 0.86);
+  color: rgba(255, 255, 255, 0.8);
   font-family: "Cormorant Garamond", serif;
   font-size: 24px;
   font-style: italic;
@@ -98,10 +97,13 @@
 .djs-about-intro__quote {
   color: var(--djs-secondary);
   font-family: "Cormorant Garamond", serif;
-  font-size: 42px;
+  font-size: 36px;
   font-weight: 400;
   line-height: 1.55;
   letter-spacing: -0.02em;
+}
+.djs-about-intro__quote br{
+  display:none
 }
 
 .djs-about-story {
@@ -120,7 +122,7 @@
 }
 
 .djs-about-story__content {
-  max-width: 480px;
+  max-width: 620px;
 }
 
 .djs-about-story__eyebrow {
@@ -130,19 +132,22 @@
 .djs-about-story__title {
   color: var(--djs-secondary);
   font-family: "Cormorant Garamond", serif;
-  font-size: 58px;
-  font-weight: 400;
+  font-size: 48px;
+  font-weight: 300;
   line-height: 1.08;
   letter-spacing: -0.03em;
   margin-bottom: 26px;
 }
 
 .djs-about-story__content p {
-  color: #6c655e;
-  font-size: 15px;
-  line-height: 1.95;
+  color: #555555;
+  font-size: 14px;
+  line-height: 1.6;
   margin-bottom: 18px;
-  max-width: 440px;
+  max-width: 620px;
+}
+.djs-about-story__content p br{
+  display:none
 }
 
 .djs-about-story__content p:last-child {
@@ -234,11 +239,10 @@
   margin: 0;
   color: var(--djs-secondary);
   font-family: "Cormorant Garamond", serif;
-  font-size: 50px;
+  font-size: 40px;
   font-style: italic;
   font-weight: 400;
   line-height: 1.45;
-  letter-spacing: -0.03em;
 }
 
 .djs-about-quote__meta {

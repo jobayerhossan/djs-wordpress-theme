@@ -11,9 +11,14 @@
 }
 
 .djs-cart-page {
-  padding: 58px 0 110px;
+  padding: 0px 0 40px;
   background: #fff;
   color: var(--djs-secondary);
+}
+
+.djs-cart-page.is-updating .woocommerce-cart-form {
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
 }
 
 .djs-cart-page__header {
@@ -31,8 +36,9 @@
   font-family: "Jost", sans-serif;
   font-size: 11px;
   line-height: 1.5;
-  letter-spacing: 0.24em;
+  letter-spacing: 2px;
   text-transform: uppercase;
+  font-weight: 500;
 }
 
 .djs-cart-page__eyebrow {
@@ -61,6 +67,9 @@
   align-items: start;
   padding: 28px 0 30px;
   border-top: 1px solid #ece7df;
+}
+.djs-cart-item:last-of-type{
+  border-bottom: 1px solid #ece7df;
 }
 
 .djs-cart-item:first-child {
@@ -147,7 +156,7 @@
 .djs-cart-item__quantity-controls {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
+  gap: 5px;
 }
 
 .djs-cart-qty-btn {
@@ -173,10 +182,18 @@
   padding: 0;
   border: 0;
   background: transparent;
+  -moz-appearance: textfield;
+  appearance: textfield;
   color: var(--djs-secondary);
   text-align: center;
   font-family: "Jost", sans-serif;
   font-size: 16px;
+}
+
+.djs-cart-item__quantity-input .input-text.qty::-webkit-outer-spin-button,
+.djs-cart-item__quantity-input .input-text.qty::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
 }
 
 .djs-cart-summary {
@@ -214,6 +231,16 @@
 
 .djs-cart-summary__note {
   margin-bottom: 20px;
+}
+
+.djs-cart-summary__legal {
+  font-size: 11px;
+}
+
+.djs-cart-summary__legal a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .djs-cart-summary__checkout {
@@ -256,7 +283,7 @@
   display: flex;
   align-items: center;
   gap: 28px;
-  margin-bottom: 18px;
+  margin-bottom: 0;
 }
 
 .djs-cart-suggestions__tab {
@@ -270,6 +297,22 @@
 .djs-cart-suggestions__tab.is-active {
   color: var(--djs-secondary);
   border-bottom-color: var(--djs-secondary);
+}
+
+.djs-cart-suggestions__panel {
+  display: none;
+}
+
+.djs-cart-suggestions__panel.is-active {
+  display: block;
+}
+
+.djs-cart-suggestions__empty {
+  margin: 0;
+  padding: 24px 0;
+  color: #a39a8f;
+  font-size: 13px;
+  line-height: 1.7;
 }
 
 .woocommerce-cart .djs-cart-suggestions .products {

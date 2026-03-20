@@ -1,39 +1,35 @@
 <?php
 /**
- * Blog index template.
+ * Archive template.
  *
  * @package DJS
  */
 
 get_header();
 
-$djs_blog_title       = djs_get_theme_text( 'blog_index_title', 'Journal' );
-$djs_blog_read_more   = djs_get_theme_text( 'blog_read_more', 'Lire la suite' );
-$djs_blog_empty       = djs_get_theme_text( 'blog_empty_text', 'Aucun article n’a été publié pour le moment.' );
-$djs_pagination_prev  = djs_get_theme_text( 'pagination_prev_text', 'Précédent' );
-$djs_pagination_next  = djs_get_theme_text( 'pagination_next_text', 'Suivant' );
+$djs_archive_empty_text = djs_get_theme_text( 'archive_empty_text', 'Aucun contenu disponible dans cette archive.' );
+$djs_pagination_prev    = djs_get_theme_text( 'pagination_prev_text', 'Précédent' );
+$djs_pagination_next    = djs_get_theme_text( 'pagination_next_text', 'Suivant' );
 ?>
 
-<main class="djs-page-content djs-blog-index">
+<main class="djs-page-content djs-archive-page">
 	<div class="djs-container">
-		<header class="djs-page-header djs-blog-index__header">
-			<h1 class="djs-page-title">
-				<?php
-				if ( is_home() && ! is_front_page() ) {
-					single_post_title();
-				} else {
-					echo esc_html( $djs_blog_title );
-				}
-				?>
-			</h1>
+		<header class="djs-page-header djs-archive-page__header">
+			<h1 class="djs-page-title"><?php the_archive_title(); ?></h1>
+
+			<?php if ( get_the_archive_description() ) : ?>
+				<div class="djs-page-body djs-archive-page__description">
+					<?php echo wp_kses_post( wpautop( get_the_archive_description() ) ); ?>
+				</div>
+			<?php endif; ?>
 		</header>
 
 		<?php if ( have_posts() ) : ?>
-			<div class="djs-blog-index__list">
+			<div class="djs-blog-index__list djs-archive-page__list">
 				<?php while ( have_posts() ) : ?>
 					<?php the_post(); ?>
 
-					<article id="post-<?php the_ID(); ?>" <?php post_class( 'djs-blog-card' ); ?>>
+					<article id="post-<?php the_ID(); ?>" <?php post_class( 'djs-blog-card djs-archive-card' ); ?>>
 						<?php if ( has_post_thumbnail() ) : ?>
 							<a class="djs-blog-card__thumb" href="<?php the_permalink(); ?>">
 								<?php the_post_thumbnail( 'large' ); ?>
@@ -54,10 +50,6 @@ $djs_pagination_next  = djs_get_theme_text( 'pagination_next_text', 'Suivant' );
 							<div class="djs-blog-card__excerpt">
 								<?php the_excerpt(); ?>
 							</div>
-
-							<a class="djs-blog-card__link" href="<?php the_permalink(); ?>">
-								<?php echo esc_html( $djs_blog_read_more ); ?>
-							</a>
 						</div>
 					</article>
 				<?php endwhile; ?>
@@ -75,8 +67,8 @@ $djs_pagination_next  = djs_get_theme_text( 'pagination_next_text', 'Suivant' );
 				?>
 			</div>
 		<?php else : ?>
-			<div class="djs-blog-empty">
-				<p><?php echo esc_html( $djs_blog_empty ); ?></p>
+			<div class="djs-blog-empty djs-archive-page__empty">
+				<p><?php echo esc_html( $djs_archive_empty_text ); ?></p>
 			</div>
 		<?php endif; ?>
 	</div>

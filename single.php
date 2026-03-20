@@ -6,6 +6,9 @@
  */
 
 get_header();
+
+$djs_single_prev_text = djs_get_theme_text( 'single_prev_text', 'Article précédent' );
+$djs_single_next_text = djs_get_theme_text( 'single_next_text', 'Article suivant' );
 ?>
 
 <main class="djs-page-content djs-single-post">
@@ -37,10 +40,10 @@ get_header();
 
 			<nav class="djs-single-post__nav" aria-label="<?php esc_attr_e( 'Post navigation', 'djs' ); ?>">
 				<div class="djs-single-post__nav-prev">
-					<?php previous_post_link( '%link', esc_html__( 'Article précédent', 'djs' ) ); ?>
+					<?php previous_post_link( '%link', esc_html( $djs_single_prev_text ) ); ?>
 				</div>
 				<div class="djs-single-post__nav-next">
-					<?php next_post_link( '%link', esc_html__( 'Article suivant', 'djs' ) ); ?>
+					<?php next_post_link( '%link', esc_html( $djs_single_next_text ) ); ?>
 				</div>
 			</nav>
 		<?php endwhile; ?>

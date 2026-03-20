@@ -1,0 +1,71 @@
+.djs-wishlist-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #1a1a1a;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.djs-wishlist-toggle:hover {
+  opacity: 0.8;
+}
+
+.djs-wishlist-toggle.is-loading {
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.djs-wishlist-toggle__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.djs-wishlist-toggle__icon svg {
+  display: block;
+}
+
+.djs-product-card__wishlist .djs-wishlist-toggle {
+  width: 22px;
+  height: 22px;
+}
+
+.djs-single-product__wishlist {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #b3ab9f;
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.djs-single-product__wishlist .djs-wishlist-toggle__text {
+  display: inline-block;
+}
+
+.djs-single-product__wishlist.is-active {
+  color: #1a1a1a;
+}
+
+.djs-wishlist-page {
+  min-height: 120px;
+}
+
+.djs-wishlist-page__empty {
+  margin: 0;
+  padding: 24px 0;
+  color: #8d857a;
+  font-size: 14px;
+  line-height: 1.7;
+}

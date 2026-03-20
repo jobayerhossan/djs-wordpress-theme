@@ -17,6 +17,7 @@
   font-size: 32px;
   margin-bottom: 10px;
   font-family: "Cormorant Garamond", serif;
+  font-weight: 300;
 }
 
 .footer-newsletter-text p {
@@ -49,6 +50,26 @@
   letter-spacing: 0.15em;
 }
 
+.newsletter-form button.is-loading {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.newsletter-form__status {
+  min-height: 20px;
+  margin: 12px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.newsletter-form__status.is-success {
+  color: #f7f5f2;
+}
+
+.newsletter-form__status.is-error {
+  color: #f0b4b4;
+}
+
 /* ======================
    Footer Main
 ====================== */
@@ -65,9 +86,10 @@
 .footer-title {
   color: #F7F5F2;
   font-size: 13px;
-  letter-spacing: 0.2em;
   margin-bottom: 20px;
   text-transform: uppercase;
+    font-family: "Jost", sans-serif;
+    letter-spacing: 2.5px;
 }
 
 .footer-menu {

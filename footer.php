@@ -1,3 +1,19 @@
+<?php
+$djs_footer_newsletter_title       = djs_get_theme_text( 'footer_newsletter_title', 'Rejoignez la communauté DJS' );
+$djs_footer_newsletter_text        = djs_get_theme_text( 'footer_newsletter_text', 'Nouvelles collections et événements exclusifs.' );
+$djs_footer_newsletter_placeholder = djs_get_theme_text( 'footer_newsletter_placeholder', 'Votre adresse e-mail' );
+$djs_footer_newsletter_button      = djs_get_theme_text( 'footer_newsletter_button', 'S’INSCRIRE' );
+$djs_footer_description            = djs_get_theme_text( 'footer_description', 'Mode de luxe française, créée avec passion et savoir-faire artisanal depuis Paris.' );
+$djs_footer_nav_title              = djs_get_theme_text( 'footer_nav_title', 'Boutique' );
+$djs_footer_service_title          = djs_get_theme_text( 'footer_service_title', 'Service Client' );
+$djs_footer_store_title            = djs_get_theme_text( 'footer_store_title', 'Boutique Paris' );
+$djs_footer_address                = djs_get_theme_text( 'footer_address', "12 Rue du Faubourg Saint-Honoré\n75008 Paris, France" );
+$djs_footer_hours                  = djs_get_theme_text( 'footer_hours', "Lun — Sam : 10h — 19h\nDimanche : 11h — 18h" );
+$djs_footer_contact                = djs_get_theme_text( 'footer_contact', "contact@djs-paris.com\n+33 1 42 00 00 00" );
+$djs_footer_copy_template          = djs_get_theme_text( 'footer_copy', '© {year} DJS Paris. Tous droits réservés - Designed by Refresh Services' );
+$djs_footer_copy                   = str_replace( '{year}', gmdate( 'Y' ), $djs_footer_copy_template );
+?>
+
 <footer class="site-footer">
 
 	<div class="footer-top">
@@ -5,15 +21,23 @@
 			<div class="footer-newsletter flex justify-between align-center">
 
 				<div class="footer-newsletter-text">
-					<h2>Rejoignez la communauté DJS</h2>
-					<p>Nouvelles collections et événements exclusifs.</p>
+					<h2><?php echo esc_html( $djs_footer_newsletter_title ); ?></h2>
+					<p><?php echo esc_html( $djs_footer_newsletter_text ); ?></p>
 				</div>
 
 				<div class="footer-newsletter-form">
-					<form class="newsletter-form">
-						<input type="email" name="email" placeholder="Votre adresse e-mail" required>
-						<button type="submit">S’INSCRIRE</button>
+					<form class="newsletter-form" id="djs-newsletter-form" novalidate>
+						<input
+							type="email"
+							name="email"
+							id="djs-newsletter-email"
+							placeholder="<?php echo esc_attr( $djs_footer_newsletter_placeholder ); ?>"
+							required
+							aria-describedby="djs-newsletter-status"
+						>
+						<button type="submit"><?php echo esc_html( $djs_footer_newsletter_button ); ?></button>
 					</form>
+					<p class="newsletter-form__status" id="djs-newsletter-status" aria-live="polite"></p>
 				</div>
 
 			</div>
@@ -33,7 +57,7 @@
 					</div>
 
 					<p class="footer-desc">
-						Mode de luxe française, créée avec passion et savoir-faire artisanal depuis Paris.
+						<?php echo esc_html( $djs_footer_description ); ?>
 					</p>
 
 					<div class="footer-social flex gap-16">
@@ -45,7 +69,7 @@
 
 				<!-- Navigation -->
 				<div class="footer-col">
-					<h4 class="footer-title">Boutique</h4>
+					<h4 class="footer-title"><?php echo esc_html( $djs_footer_nav_title ); ?></h4>
 					<?php
 					wp_nav_menu(array(
 						'theme_location' => 'footer_menu',
@@ -57,7 +81,7 @@
 
 				<!-- Service Client -->
 				<div class="footer-col">
-					<h4 class="footer-title">Service Client</h4>
+					<h4 class="footer-title"><?php echo esc_html( $djs_footer_service_title ); ?></h4>
 					<?php
 					wp_nav_menu(array(
 						'theme_location' => 'footer_service',
@@ -69,22 +93,13 @@
 
 				<!-- Contact -->
 				<div class="footer-col">
-					<h4 class="footer-title">Boutique Paris</h4>
+					<h4 class="footer-title"><?php echo esc_html( $djs_footer_store_title ); ?></h4>
 
-					<p>
-						12 Rue du Faubourg Saint-Honoré<br>
-						75008 Paris, France
-					</p>
+					<p><?php echo nl2br( esc_html( $djs_footer_address ) ); ?></p>
 
-					<p>
-						Lun — Sam : 10h — 19h<br>
-						Dimanche : 11h — 18h
-					</p>
+					<p><?php echo nl2br( esc_html( $djs_footer_hours ) ); ?></p>
 
-					<p>
-						contact@djs-paris.com<br>
-						+33 1 42 00 00 00
-					</p>
+					<p><?php echo nl2br( esc_html( $djs_footer_contact ) ); ?></p>
 				</div>
 
 			</div>
@@ -95,7 +110,7 @@
 		<div class="djs-container flex justify-between align-center">
 
 			<p class="footer-copy">
-				© <?php echo date('Y'); ?> DJS Paris. Tous droits réservés - Designed by Refresh Services
+				<?php echo wp_kses_post( $djs_footer_copy ); ?>
 			</p>
 
 			<div class="footer-legal">

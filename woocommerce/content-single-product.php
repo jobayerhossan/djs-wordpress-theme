@@ -161,10 +161,7 @@ $accordion_sections = array_filter(
 							</a>
 						<?php endif; ?>
 
-						<button type="button" class="djs-single-product__wishlist" aria-label="<?php esc_attr_e( 'Ajouter à la liste de souhaits', 'djs' ); ?>">
-							<span class="djs-single-product__wishlist-icon">♡</span>
-							<span><?php esc_html_e( 'Ajouter à la liste de souhaits', 'djs' ); ?></span>
-						</button>
+						<?php echo djs_get_wishlist_button_html( get_the_ID(), 'single' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					</div>
 				</div>
 

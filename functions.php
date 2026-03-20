@@ -172,6 +172,13 @@ function djs_enqueue_assets() {
 		$theme_version
 	);
 
+	wp_enqueue_style(
+		'djs-wishlist-style',
+		get_template_directory_uri() . '/assets/css/wishlist.css',
+		array( 'djs-products' ),
+		$theme_version
+	);
+
 	if ( is_product() ) {
 		wp_enqueue_style(
 			'djs-single-product-style',
@@ -185,6 +192,15 @@ function djs_enqueue_assets() {
 		wp_enqueue_style(
 			'djs-cart-page-style',
 			get_template_directory_uri() . '/assets/css/cart-page.css',
+			array( 'djs-main-style', 'djs-products' ),
+			$theme_version
+		);
+	}
+
+	if ( is_checkout() ) {
+		wp_enqueue_style(
+			'djs-checkout-page-style',
+			get_template_directory_uri() . '/assets/css/checkout.css',
 			array( 'djs-main-style', 'djs-products' ),
 			$theme_version
 		);
@@ -223,12 +239,21 @@ function djs_enqueue_assets() {
 		true
 	);
 
+	wp_enqueue_script(
+		'djs-wishlist-script',
+		get_template_directory_uri() . '/assets/js/wishlist.js',
+		array( 'jquery', 'djs-custom-script' ),
+		$theme_version,
+		true
+	);
+
 	wp_localize_script(
 		'djs-custom-script',
 		'djs_ajax_obj',
 		array(
-			'ajax_url' => admin_url( 'admin-ajax.php' ),
-			'nonce'    => wp_create_nonce( 'djs_ajax_nonce' ),
+			'ajax_url'           => admin_url( 'admin-ajax.php' ),
+			'nonce'              => wp_create_nonce( 'djs_ajax_nonce' ),
+			'current_product_id' => is_product() ? get_the_ID() : 0,
 		)
 	);
 }
@@ -244,3 +269,9 @@ require_once get_template_directory() . '/inc/contact-page-acf.php';
 require_once get_template_directory() . '/inc/contact-page.php';
 require_once get_template_directory() . '/inc/account.php';
 require_once get_template_directory() . '/inc/mega-menu.php';
+require_once get_template_directory() . '/inc/footer-newsletter.php';
+require_once get_template_directory() . '/inc/page-settings.php';
+require_once get_template_directory() . '/inc/recently-viewed.php';
+require_once get_template_directory() . '/inc/cart-ajax.php';
+require_once get_template_directory() . '/inc/wishlist.php';
+require_once get_template_directory() . '/inc/theme-customizer.php';

@@ -16,16 +16,12 @@ $hover_image_id    = ! empty( $gallery_image_ids ) ? $gallery_image_ids[0] : $pr
 <li <?php wc_product_class( 'djs-product-card', $product ); ?>>
 
 	<div class="djs-product-card__inner">
+		<div class="djs-product-card__wishlist">
+			<?php echo djs_get_wishlist_button_html( $product_id, 'loop' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+		</div>
 
-		<a href="<?php the_permalink(); ?>" class="djs-product-card__image-link">
-
-			<div class="djs-product-card__image-wrap">
-
-				<div class="djs-product-card__wishlist">
-					<a href="#" aria-label="<?php esc_attr_e( 'Add to wishlist', 'djs' ); ?>">
-						<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/heart.svg' ); ?>" alt="<?php esc_attr_e( 'Wishlist', 'djs' ); ?>">
-					</a>
-				</div>
+		<div class="djs-product-card__image-wrap">
+			<a href="<?php the_permalink(); ?>" class="djs-product-card__image-link">
 
 				<?php if ( $primary_image_id ) : ?>
 					<div class="djs-product-card__image djs-product-card__image--default">
@@ -58,47 +54,46 @@ $hover_image_id    = ! empty( $gallery_image_ids ) ? $gallery_image_ids[0] : $pr
 						?>
 					</div>
 				<?php endif; ?>
+			</a>
 
-				<div class="djs-product-card__overlay">
-					<?php
-					echo apply_filters(
-						'woocommerce_loop_add_to_cart_link',
-						sprintf(
-							'<a href="%s" data-quantity="%s" class="%s" %s>%s</a>',
-							esc_url( $product->add_to_cart_url() ),
-							esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ),
-							esc_attr(
-								implode(
-									' ',
-									array_filter(
-										array(
-											'button',
-											'product_type_' . $product->get_type(),
-											$product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : '',
-											$product->supports( 'ajax_add_to_cart' ) && $product->is_purchasable() && $product->is_in_stock() ? 'ajax_add_to_cart' : '',
-											'djs-product-card__cart-btn',
-										)
+			<div class="djs-product-card__overlay">
+				<?php
+				echo apply_filters(
+					'woocommerce_loop_add_to_cart_link',
+					sprintf(
+						'<a href="%s" data-quantity="%s" class="%s" %s>%s</a>',
+						esc_url( $product->add_to_cart_url() ),
+						esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ),
+						esc_attr(
+							implode(
+								' ',
+								array_filter(
+									array(
+										'button',
+										'product_type_' . $product->get_type(),
+										$product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : '',
+										$product->supports( 'ajax_add_to_cart' ) && $product->is_purchasable() && $product->is_in_stock() ? 'ajax_add_to_cart' : '',
+										'djs-product-card__cart-btn',
 									)
 								)
-							),
-							wc_implode_html_attributes(
-								array(
-									'data-product_id'  => $product->get_id(),
-									'data-product_sku' => $product->get_sku(),
-									'aria-label'       => $product->add_to_cart_description(),
-									'rel'              => 'nofollow',
-								)
-							),
-							esc_html( $product->add_to_cart_text() )
+							)
 						),
-						$product,
-						array()
-					);
-					?>
-				</div>
-
+						wc_implode_html_attributes(
+							array(
+								'data-product_id'  => $product->get_id(),
+								'data-product_sku' => $product->get_sku(),
+								'aria-label'       => $product->add_to_cart_description(),
+								'rel'              => 'nofollow',
+							)
+						),
+						esc_html( $product->add_to_cart_text() )
+					),
+					$product,
+					array()
+				);
+				?>
 			</div>
-		</a>
+		</div>
 
 		<div class="djs-product-card__content">
 			<h2 class="djs-product-card__title">
